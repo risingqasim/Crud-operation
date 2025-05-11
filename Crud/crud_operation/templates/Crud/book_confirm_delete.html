@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card border-danger shadow-sm">
+        <div class="card-header bg-danger text-white">
+          <h3 class="card-title mb-0">
+            <i class="bi bi-exclamation-triangle"></i> Confirm Deletion
+          </h3>
+        </div>
+        <div class="card-body text-center">
+          <div class="mb-4">
+            <i class="bi bi-book text-danger" style="font-size: 4rem;"></i>
+          </div>
+          <h4 class="mb-3">Are you sure you want to delete?</h4>
+          <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-circle"></i>
+            <strong>"{{ book.title }}"</strong> by {{ book.author }} will be permanently removed.
+          </div>
+          <form method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-lg me-2">
+              <i class="bi bi-trash"></i> Yes, Delete
+            </button>
+          </form>
+          <a href="{% url 'list_books' %}" class="btn btn-outline-secondary btn-lg">
+            <i class="bi bi-x-circle"></i> Cancel
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
